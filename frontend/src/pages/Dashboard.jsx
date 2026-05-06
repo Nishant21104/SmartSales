@@ -52,15 +52,16 @@ const KPICard = ({ label, value, icon, trend, trendLabel, accent }) => (
       position: 'absolute', top: 0, left: 0, width: 4,
       height: '100%', background: accent, borderRadius: '16px 0 0 16px'
     }} />
-    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', paddingLeft: 8 }}>
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', paddingLeft: 0 }}>
       <div>
         <p style={{ fontSize: 12, fontWeight: 500, color: '#888780', textTransform: 'uppercase', letterSpacing: '0.08em', margin: 0 }}>{label}</p>
-        <p style={{ fontSize: 28, fontWeight: 700, color: '#2C2C2A', margin: '6px 0 0', lineHeight: 1 }}>{value}</p>
+        <p style={{ fontSize: 28, fontWeight: 700, color: '#2C2C2A', margin: '6px -5px 0', lineHeight: 1 }}>{value}</p>
       </div>
       <div style={{
         width: 44, height: 44, borderRadius: 12,
-        background: accent + '18',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        //background: accent + '18',
+        display: 'flex', 
+        // alignItems: 'center', justifyContent: 'center',
         fontSize: 20,
       }}>{icon}</div>
     </div>
@@ -295,7 +296,7 @@ export default function Dashboard() {
 
       {/* KPI Cards */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16, marginBottom: '1.5rem' }}>
-        <KPICard label="Total Revenue" value={`₹${data.totalRevenue?.toLocaleString('en-US', { minimumFractionDigits: 2 }) || '0.00'}`} icon="💰" trend={data.growthPercentage} trendLabel="vs last period" accent="#378ADD" />
+        <KPICard label="Total Revenue" value={`₹${data.totalRevenue?.toLocaleString('en-US', { minimumFractionDigits: 2 }) || '0.00'}`} trend={data.growthPercentage} trendLabel="vs last period" accent="#378ADD" />
         <KPICard label="Total Orders" value={data.totalOrders?.toLocaleString() || '0'} icon="📦" accent="#1D9E75" />
         <KPICard label="Products" value={data.totalProducts?.toLocaleString() || '0'} icon="🗂️" accent="#7F77DD" />
         <KPICard label="Avg. Order Value" value={`₹${avgOrder}`} icon="📊" trend={data.growthPercentage} trendLabel="growth" accent="#BA7517" />
